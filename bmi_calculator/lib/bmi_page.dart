@@ -50,7 +50,7 @@ class BMIPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          _bmiResult,
+                          _bmiResult.toUpperCase(),
                           style: TextStyle(
                             fontSize: 30.0,
                             fontWeight: FontWeight.bold,
@@ -92,7 +92,6 @@ class BMIPage extends StatelessWidget {
               color: Colors.red,
             ),
             onTap: () {
-              print("clicked on re-calculate...");
               Navigator.pop(context);
             },
           ),

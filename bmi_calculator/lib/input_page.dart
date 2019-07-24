@@ -31,7 +31,7 @@ class _InputPageState extends State<InputPage> {
 
   void setGender(Gender gender) {
     setState(() {
-      print("Selected: $gender");
+      //print("Selected: $gender");
       selectedGender = gender;
       maleColor = (selectedGender == Gender.Male) ? activeColor : inactiveColor;
       femaleColor =
@@ -48,14 +48,14 @@ class _InputPageState extends State<InputPage> {
   void setWeight(int selectedWeight) {
     setState(() {
       weight = selectedWeight;
-      print("Selected weight: $weight");
+      //print("Selected weight: $weight");
     });
   }
 
   void setAge(int selectedAge) {
     setState(() {
       age = selectedAge;
-      print("Selected age: $age");
+      //print("Selected age: $age");
     });
   }
 
@@ -149,10 +149,10 @@ class _InputPageState extends State<InputPage> {
                 color: Colors.red,
               ),
               onTap: () {
-                print("clicked on calculate...");
+                //print("clicked on calculate...");
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return BMIPage(height: height, weight: weight);
+                    returnBMIPage(height: height, weight: weight);
                   }
                 ));
               },
