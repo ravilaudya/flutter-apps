@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/bmi_page.dart';
 import 'package:bmi_calculator/counter_card.dart';
 import "package:flutter/material.dart";
 import "./box_card.dart";
@@ -149,6 +150,11 @@ class _InputPageState extends State<InputPage> {
               ),
               onTap: () {
                 print("clicked on calculate...");
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return BMIPage(height: height, weight: weight);
+                  }
+                ));
               },
             ),
           ],

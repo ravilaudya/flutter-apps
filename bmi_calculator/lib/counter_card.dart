@@ -6,7 +6,8 @@ class _CounterCardState extends State<CounterCard> {
   final int defaultValue;
   final String title;
 
-  _CounterCardState({@required this.title, this.onValueSelected, this.defaultValue}) {
+  _CounterCardState(
+      {@required this.title, this.onValueSelected, this.defaultValue}) {
     valueSelected = this.defaultValue;
   }
 
@@ -32,7 +33,13 @@ class _CounterCardState extends State<CounterCard> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FloatingActionButton(
+            RawMaterialButton(
+              fillColor: Colors.grey,
+              shape: CircleBorder(),
+              constraints: BoxConstraints.tightFor(
+                width: 56.0,
+                height: 56.0,
+              ),
               child: Text(
                 "-",
                 style: TextStyle(fontSize: 40.0),
@@ -47,7 +54,13 @@ class _CounterCardState extends State<CounterCard> {
             SizedBox(
               width: 20.0,
             ),
-            FloatingActionButton(
+            RawMaterialButton(
+              fillColor: Colors.grey,
+              shape: CircleBorder(),
+              constraints: BoxConstraints.tightFor(
+                width: 56.0,
+                height: 56.0,
+              ),
               child: Text(
                 "+",
                 style: TextStyle(fontSize: 40.0),
@@ -74,5 +87,8 @@ class CounterCard extends StatefulWidget {
   CounterCard({@required this.title, this.onValueSelected, this.defaultValue});
 
   @override
-  _CounterCardState createState() => _CounterCardState(title: title, onValueSelected: onValueSelected, defaultValue: defaultValue);
+  _CounterCardState createState() => _CounterCardState(
+      title: title,
+      onValueSelected: onValueSelected,
+      defaultValue: defaultValue);
 }
