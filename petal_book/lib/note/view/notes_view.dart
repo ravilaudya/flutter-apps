@@ -24,14 +24,43 @@ class _NotesViewState extends State<NotesView> {
     notes = fetchNotes();
   }
 
+  ListView showNotes() {
+    return ListView(
+      children: const <Widget>[
+        Text('Hello'),
+        Text('I am here'),
+        Text('Ding dong'),
+      ],
+    );
+  }
+
+  Widget showNotesOrAddNote() {
+    if (notes == null || notes.isEmpty) {
+      return Container(
+        child: Column(
+          children: <Widget>[
+            const Text('Let\'s get started with adding few notes...',
+            style: TextStyle(fontSize: 15.0),),
+            const SizedBox(height: 20.0,),
+            FloatingActionButton(
+              onPressed: () {},
+              child: const Text('+'),
+            ),
+          ],
+        ),
+      );
+    }
+    return showNotes();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: const <Widget>[
-          Text('Notes come here'),
+        children: <Widget>[
+          showNotesOrAddNote(),
         ],
       ),
     );

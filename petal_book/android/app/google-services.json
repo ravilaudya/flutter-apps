@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "774458838939",
+    "firebase_url": "https://petal-book-test.firebaseio.com",
+    "project_id": "petal-book-test",
+    "storage_bucket": "petal-book-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774458838939:android:c5d1ae7a2437e385",
+        "android_client_info": {
+          "package_name": "com.petalbook.petalBook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "774458838939-jvro9a9akiesm1k1bjjunogej1okoj3e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADxfwXIkUb6NMv6dV7L2kIlGXSvEQRvTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "774458838939-jvro9a9akiesm1k1bjjunogej1okoj3e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "774458838939-vr5vga4l2acu4o0kqaravf1cdcldu2t4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.petalbook.petalBook"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
