@@ -3,8 +3,8 @@ import 'package:petal_book/core/user/model/user_profile.dart';
 import 'package:petal_book/note/view/notes_view.dart';
 import 'package:petal_book/topic/model/topic.dart';
 
-class DashboardView extends StatelessWidget {
-  const DashboardView({this.topics, this.profile, this.activeTopic});
+class HomePageView extends StatelessWidget {
+  const HomePageView({this.topics, this.profile, this.activeTopic});
 
   final List<Topic> topics;
   final UserProfile profile;

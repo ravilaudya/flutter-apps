@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petal_book/note/model/note.dart';
+import 'package:petal_book/note/view/note_add_view.dart';
 import 'package:petal_book/topic/model/topic.dart';
 
 class NotesView extends StatefulWidget {
@@ -39,11 +40,20 @@ class _NotesViewState extends State<NotesView> {
       return Container(
         child: Column(
           children: <Widget>[
-            const Text('Let\'s get started with adding few notes...',
-            style: TextStyle(fontSize: 15.0),),
-            const SizedBox(height: 20.0,),
+            const Text(
+              'Let\'s get started with adding few notes...',
+              style: TextStyle(fontSize: 15.0),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
             FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute<NoteAddView>(
+                        builder: (BuildContext context) => NoteAddView()));
+              },
               child: const Text('+'),
             ),
           ],
