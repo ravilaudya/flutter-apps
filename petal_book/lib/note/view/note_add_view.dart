@@ -77,8 +77,6 @@ class _NoteAddViewState extends State<NoteAddView> {
                         },
                         icon: Icon(
                           Icons.camera,
-                          color: Colors.amber,
-                          size: 50,
                         ),
                       ),
                       const SizedBox(width: 20,),
@@ -88,7 +86,6 @@ class _NoteAddViewState extends State<NoteAddView> {
                         },
                         icon: Icon(
                           FontAwesomeIcons.image,
-                          size: 50,
                         ),
                       ),
                     ],

@@ -50,9 +50,9 @@ ThemeData lightTheme = baseLightTheme.copyWith(
   indicatorColor: const Color(0xFF807A6B),
   scaffoldBackgroundColor: const Color(0xFFF5F5F5),
   accentColor: const Color(0xFFFFF8E1),
-  iconTheme: IconThemeData(
-    color: Colors.white,
-    size: 20.0,
+  iconTheme: const IconThemeData(
+    color: lightAccent,
+    size: 50.0,
   ),
   buttonColor: Colors.white,
   backgroundColor: Colors.white,
@@ -61,6 +61,10 @@ ThemeData lightTheme = baseLightTheme.copyWith(
     unselectedLabelColor: Colors.grey,
   ),
   cursorColor: lightAccent,
+  appBarTheme: const AppBarTheme(
+    color: lightAccent,
+    elevation: 0, 
+  ),
 );
 
 ThemeData darkTheme = baseDarkTheme.copyWith(
