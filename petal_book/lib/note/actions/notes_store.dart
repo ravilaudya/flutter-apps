@@ -21,3 +21,7 @@ Future<Note> addNote(UserDetails user, Topic topic, Note note) async {
   await doc.setData(data);
   return Note(title: topic.title, uid: doc.documentID, contents: note.contents);
 }
+
+Stream<QuerySnapshot> fetchNotes(UserDetails user, Topic topic) {
+  return Firestore.instance.collection(notesCollection).snapshots();
+}

@@ -15,7 +15,6 @@ class _NotePageFormState extends State<NotePageForm> {
   final TextEditingController _notesController = TextEditingController();
   final GlobalKey _newNoteFormKey = GlobalKey<FormState>();
 
-
   @override
   void dispose() {
     super.dispose();
@@ -23,11 +22,19 @@ class _NotePageFormState extends State<NotePageForm> {
     _notesController.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Future<void> saveNote() async {
     final UserDetails user = Provider.of<UserDetails>(context);
     final Topic activeTopic = Provider.of<Topic>(context);
+    final Note newNote =
+        Note(title: _titleController.text, contents: _notesController.text);
+    final Note addedNote = await addNote(user, activeTopic, newNote);
+    if (addedNote != null) {
+      Navigator.pop(context);
+    }
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Form(
       key: _newNoteFormKey,
       child: Column(
@@ -55,7 +62,7 @@ class _NotePageFormState extends State<NotePageForm> {
                 // If the form is valid, display a Snackbar.
                 Scaffold.of(context)
                     .showSnackBar(SnackBar(content: const Text('Saving...')));
-                await addNote(user, activeTopic, Note(title: _titleController.text, contents: _notesController.text));
+                await saveNote();
                 _titleController.clear();
                 _notesController.clear();
               }
@@ -66,5 +73,4 @@ class _NotePageFormState extends State<NotePageForm> {
       ),
     );
   }
-
 }

@@ -23,16 +23,7 @@ class _HomePageState extends State<HomePage> {
         Provider<UserDetails>.value(value: widget.user),
         Provider<Topic>.value(value: widget.activeTopic),
       ],
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Petal Book'),
-          actions: const <Widget>[
-            Text('No Name'),
-          ],
-          leading: const Text('General'),
-        ),
-        body: NotesPage(topic: widget.activeTopic),
-      ),
+      child: NotesPage(topic: widget.activeTopic),
     );
   }
 }
