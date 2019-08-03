@@ -3,16 +3,16 @@ import 'package:petal_book/note/model/note.dart';
 import 'package:petal_book/note/view/note_add_view.dart';
 import 'package:petal_book/topic/model/topic.dart';
 
-class NotesView extends StatefulWidget {
-  const NotesView({@required this.topic});
+class NotesPage extends StatefulWidget {
+  const NotesPage({@required this.topic});
 
   final Topic topic;
 
   @override
-  _NotesViewState createState() => _NotesViewState();
+  _NotesPageState createState() => _NotesPageState();
 }
 
-class _NotesViewState extends State<NotesView> {
+class _NotesPageState extends State<NotesPage> {
   List<Note> notes;
 
   List<Note> fetchNotes() {

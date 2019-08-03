@@ -1,5 +1,9 @@
 
+import 'package:flutter/foundation.dart';
+
 class Topic {
-  String name;
-  String id;
+  Topic({@required this.title, this.id});
+
+  final String title;
+  final String id;
 }

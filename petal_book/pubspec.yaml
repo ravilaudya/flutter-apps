@@ -29,6 +29,7 @@ dependencies:
   flutter_secure_storage: ^3.2.1+1
   basic_utils:
   flutter_spinkit: ^3.1.0
+  cloud_firestore: ^0.12.9
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
