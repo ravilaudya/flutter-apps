@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:petal_book/home/homepage_view.dart';
+import 'package:petal_book/home/home_page.dart';
 import './theme/theme_constants.dart';
 
 void main() => runApp(PetalBookApp());
