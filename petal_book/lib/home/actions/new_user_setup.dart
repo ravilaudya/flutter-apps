@@ -12,10 +12,10 @@ Future<Topic> setupBasicTopic(UserDetails user) async {
   final Topic existingTopic = await fetchTopic(user, 'Others');
   if (existingTopic == null) {
     final Topic newTopic = await createTopic(user, topic);
-    print('Created new Topic with id: ${newTopic.id}');
+    print('Created new Topic with id: ${newTopic.uid}');
     return newTopic;
   }
-  print('Found existing topic. Returning with id: ${existingTopic.id}');
+  print('Found existing topic. Returning with id: ${existingTopic.uid}');
   return existingTopic;
 }
 

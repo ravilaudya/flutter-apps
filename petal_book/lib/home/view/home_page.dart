@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:petal_book/core/user/model/user_details.dart';
 import 'package:petal_book/note/view/notes_page.dart';
 import 'package:petal_book/topic/model/topic.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({this.topics, this.user, this.activeTopic});
@@ -15,18 +16,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Petal Book'),
-        actions: const <Widget>[
-          Text('No Name'),
-        ],
-        leading: const Text('General'),
+    return MultiProvider(
+      providers: <Provider<dynamic>>[
+        Provider<UserDetails>.value(value: widget.user),
+        Provider<Topic>.value(value: widget.activeTopic),
+      ],
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Petal Book'),
+          actions: const <Widget>[
+            Text('No Name'),
+          ],
+          leading: const Text('General'),
+        ),
+        body: NotesPage(topic: widget.activeTopic),
       ),
-      body: NotesPage(topic: widget.activeTopic),
     );
   }
 }

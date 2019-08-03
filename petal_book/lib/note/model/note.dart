@@ -1,7 +1,9 @@
-
+import 'package:flutter/foundation.dart';
 
 class Note {
-  String noteId;
+  Note({@required this.title, this.uid, this.contents});
+
+  String uid;
   String title;
   String contents;
 }

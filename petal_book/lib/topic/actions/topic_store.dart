@@ -5,7 +5,7 @@ import 'package:petal_book/topic/model/topic.dart';
 const String topicCollection = 'topics';
 
 Future<Topic> createTopic(UserDetails user, Topic topic) async {
-  final Map<String, String> data = {
+  final Map<String, String> data = <String, String>{
     'title': topic.title,
     'userId': user.uid,
   };
@@ -14,7 +14,7 @@ Future<Topic> createTopic(UserDetails user, Topic topic) async {
   final DocumentReference doc =
       Firestore.instance.collection(topicCollection).document();
   await doc.setData(data);
-  return Topic(title: topic.title, id: doc.documentID);
+  return Topic(title: topic.title, uid: doc.documentID);
 }
 
 Future<Topic> fetchTopic(UserDetails user, String title) async {
@@ -30,5 +30,5 @@ Future<Topic> fetchTopic(UserDetails user, String title) async {
   if (ds == null) {
     return null;
   }
-  return Topic(title: ds.data['title'], id: ds.documentID);
+  return Topic(title: ds.data['title'], uid: ds.documentID);
 }

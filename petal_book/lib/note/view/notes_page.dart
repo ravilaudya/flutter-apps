@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:petal_book/core/user/model/user_details.dart';
 import 'package:petal_book/note/model/note.dart';
-import 'package:petal_book/note/view/note_add_view.dart';
+import 'package:petal_book/note/view/note_add_page.dart';
 import 'package:petal_book/topic/model/topic.dart';
+import 'package:provider/provider.dart';
 
 class NotesPage extends StatefulWidget {
   const NotesPage({@required this.topic});
@@ -35,11 +37,15 @@ class _NotesPageState extends State<NotesPage> {
     );
   }
 
-  Widget showNotesOrAddNote() {
+  Widget showNotesOrAddNote(BuildContext parentContext) {
+    final UserDetails user = Provider.of<UserDetails>(parentContext);
+    final String userId = user.uid;
+
     if (notes == null || notes.isEmpty) {
       return Container(
         child: Column(
           children: <Widget>[
+            Text('Hello, $userId'),
             const Text(
               'Let\'s get started with adding few notes...',
               style: TextStyle(fontSize: 15.0),
@@ -50,9 +56,15 @@ class _NotesPageState extends State<NotesPage> {
             FloatingActionButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute<NoteAddView>(
-                        builder: (BuildContext context) => NoteAddView()));
+                    parentContext,
+                    MaterialPageRoute<NoteAddPage>(
+                        builder: (BuildContext context) =>
+                            MultiProvider(providers: <Provider<dynamic>>[
+                              Provider<UserDetails>.value(
+                                  value: Provider.of<UserDetails>(parentContext)),
+                              Provider<Topic>.value(
+                                  value: Provider.of<Topic>(parentContext)),
+                            ], child: NoteAddPage())));
               },
               child: const Text('+'),
             ),
@@ -65,13 +77,19 @@ class _NotesPageState extends State<NotesPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          showNotesOrAddNote(),
-        ],
+    return MultiProvider(
+      providers: <Provider<dynamic>>[
+        Provider<UserDetails>.value(value: Provider.of<UserDetails>(context)),
+        Provider<Topic>.value(value: Provider.of<Topic>(context)),
+      ],
+      child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            showNotesOrAddNote(context),
+          ],
+        ),
       ),
     );
   }

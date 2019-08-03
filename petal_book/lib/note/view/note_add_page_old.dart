@@ -6,12 +6,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:petal_book/note/view/take_picture_view.dart';
 
-class NoteAddView extends StatefulWidget {
+class NoteAddPageOld extends StatefulWidget {
   @override
-  _NoteAddViewState createState() => _NoteAddViewState();
+  _NoteAddPageOldState createState() => _NoteAddPageOldState();
 }
 
-class _NoteAddViewState extends State<NoteAddView> {
+class _NoteAddPageOldState extends State<NoteAddPageOld> {
   CameraDescription _camera;
 
   Future<void> fetchCamera() async {
