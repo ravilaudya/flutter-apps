@@ -21,23 +21,9 @@ class _NoteAddPageState extends State<NoteAddPage> {
         appBar: AppBar(
           title: const Text('Add Note!'),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    NotePageForm(),
-                  ],
-                ),
-              ),
-            ),
-          ],
+        body: Container(
+          padding: const EdgeInsets.all(10),
+          child: NotePageForm(),
         ),
       ),
     );

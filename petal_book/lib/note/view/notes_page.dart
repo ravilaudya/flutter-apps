@@ -1,4 +1,3 @@
-import 'package:basic_utils/basic_utils.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:petal_book/core/user/model/user_details.dart';
@@ -17,20 +16,21 @@ class NotesPage extends StatefulWidget {
 }
 
 class _NotesPageState extends State<NotesPage> {
+  bool isAssetsEmpty(List<dynamic> assets) {
+    if (assets == null || assets.isEmpty) {
+      return true;
+    }
+    return false;
+  }
+
   Widget buildNotePage(DocumentSnapshot doc) {
+    final List<dynamic> assets = doc.data['assets'];
     return Card(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(doc.data['title'],
-          style: const TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
-          )),
-          const SizedBox(height: 5.0,),
-          Text(doc.data['contents']),
-        ],
+      child: ListTile(
+        leading: isAssetsEmpty(assets)? const Text('') : Image.network(assets.first['location']),
+        title: Text(doc.data['title']),
+        subtitle: Text(doc.data['contents']),
+        trailing: Icon(Icons.keyboard_arrow_right),
       ),
     );
   }
@@ -100,19 +100,14 @@ class _NotesPageState extends State<NotesPage> {
       appBar: AppBar(
         title: const Text('Petal Book'),
         actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Text(
-              StringUtils.defaultString(user.displayName,
-                  defaultStr: 'Default'),
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-            ),
+          IconButton(
+            icon: Icon(Icons.list),
+            onPressed: () {},
           ),
         ],
-        leading: Text(
-          activeTopic.title,
-          textAlign: TextAlign.center,
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {},
         ),
       ),
       body: Container(
@@ -121,23 +116,25 @@ class _NotesPageState extends State<NotesPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             showNotes(context),
-            FloatingActionButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute<NoteAddPage>(
-                        builder: (BuildContext _context) =>
-                            MultiProvider(providers: <Provider<dynamic>>[
-                              Provider<UserDetails>.value(
-                                  value: Provider.of<UserDetails>(context)),
-                              Provider<Topic>.value(
-                                  value: Provider.of<Topic>(context)),
-                            ], child: NoteAddPage())));
-              },
-              child: const Text('+'),
-            ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute<NoteAddPage>(
+              builder: (BuildContext _context) => MultiProvider(
+                providers: <Provider<dynamic>>[
+                  Provider<UserDetails>.value(value: user),
+                  Provider<Topic>.value(value: activeTopic),
+                ],
+                child: NoteAddPage(),
+              ),
+            ),
+          );
+        },
+        child: const Text('+'),
       ),
     );
   }
